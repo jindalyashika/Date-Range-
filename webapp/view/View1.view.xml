@@ -1,0 +1,51 @@
+<mvc:View
+    controllerName="project3.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:rowmodes="sap.ui.table.rowmodes"
+    displayBlock="true">
+    <Page title="Date Range Table">
+        <content>
+            <OverflowToolbar>
+                <DateRangeSelection
+                    id="drs"
+                    width="18rem"
+                    displayFormat="dd/MM/yyyy"
+                    placeholder="Select date range" />
+                <Button text="Generate" type="Emphasized" press=".onGenerate" />
+            </OverflowToolbar>
+
+            <table:Table id="dynTable" rows="{/rows}" selectionMode="None" fixedColumnCount="1">
+                <table:rowMode>
+                    <rowmodes:Fixed rowCount="2" />
+                </table:rowMode>
+                <table:columns>
+                    <!-- column 1 is fixed -->
+                    <table:Column width="8rem">
+                        <table:multiLabels>
+                            <Label text="Item" />
+                            <Label text="" />
+                        </table:multiLabels>
+                        <table:template>
+                            <Text text="{name}" />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+            </table:Table>
+        </content>
+
+        <!-- Column template-->
+        <dependents>
+            <table:Column id="colTemplate" width="8rem" hAlign="Center">
+                <table:multiLabels>
+                    <Label text="" design="Bold" />   <!-- DATE -->
+                    <Label text="" />                  <!-- DAY -->
+                </table:multiLabels>
+                <table:template>
+                    <Input placeholder="-" />
+                </table:template>
+            </table:Column>
+        </dependents>
+    </Page>
+</mvc:View>
